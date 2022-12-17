@@ -74,7 +74,7 @@ create table dich_vu (
   ma_loai_dich_vu int, 
   tieu_chuan_phong varchar(45), 
   mo_ta_tien_nghi_khac varchar(45), 
-  dien_tinh_ho_boi double, 
+  dien_tich_ho_boi double, 
   so_tang int, 
   dich_vu_mien_phi_di_kem text, 
   primary key (
@@ -88,7 +88,7 @@ create table hop_dong (
   ma_hop_dong int, 
   ngay_lam_hop_dong datetime, 
   ngay_ket_thuc datetime, 
-  tien_dat_cot double, 
+  tien_dat_coc double, 
   ma_nhan_vien int, 
   ma_khach_hang int, 
   ma_dich_vu int, 
