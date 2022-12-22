@@ -81,7 +81,7 @@ having
           join hop_dong_chi_tiet hdct on hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem 
         group by 
           dvdk.ma_dich_vu_di_kem
-      ) as tong_max
+      ) 
   );
   
 -- 14.  Hiển thị thông tin tất cả các Dịch vụ đi kèm chỉ mới được sử dụng một lần duy nhất. 
