@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap-grid.css">
+    <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="row">STT</th>
+        <th>Name</th>
+        <th>Area</th>
+        <th>Max People</th>
+        <th>Number of floors</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td>1</td>
+        <td>Nguyen van b</td>
+        <td>reception</td>
+        <td>12</td>
+        <td>2</td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" size="10%" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Delete
+            </button>
+        </td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" size="30%" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Edit
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Nguyen van C</td>
+        <td>reception</td>
+        <td>10</td>
+        <td>5</td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Delete
+            </button>
+        </td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" size="30%" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Edit
+            </button>
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Nguyen van D</td>
+        <td>reception</td>
+        <td>1</td>
+        <td>1</td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" size="10%" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Delete
+            </button>
+        </td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" size="30%" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Edit
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Do you want to continue the action
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+</html>
