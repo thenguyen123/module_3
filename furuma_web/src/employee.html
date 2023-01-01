@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+    <link rel="stylesheet" href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap-grid.css">
+    <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.js"></script>
+
+</head>
+<body>
+<table class="table bg-dark text-white">
+    <thead>
+    <tr>
+
+        <th>Id</th>
+        <th> Name</th>
+        <th>Date of birth</th>
+        <th>Id card</th>
+        <th>Salary</th>
+        <th>Phone number</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Position</th>
+        <th>Education degree id</th>
+        <th>Division</th>
+        <th>User name</th>
+        <th>Delete</th>
+        <th>Edit</th>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+
+        <td>1</td>
+        <td>Nguyen Hoang C</td>
+        <td>22/12/2001</td>
+        <td>C123</td>
+        <td>15554000</td>
+        <td>097845872</td>
+        <td>abc@gmail.com</td>
+        <td>Huế</td>
+        <td>Employee</td>
+        <td>Cao Đẳng</td>
+        <td>...</td>
+        <td>HC</td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" size="10%" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Delete
+            </button>
+        </td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" size="30%" data-bs-toggle="modal"
+                    data-bs-target="#editEmployee">Edit
+            </button>
+        </td>
+    </tr>
+    <tr>
+
+        <td>2</td>
+        <td>Nguyen Hoang R</td>
+        <td>07/02/2001</td>
+        <td>C76</td>
+        <td>1000000</td>
+        <td>095324644</td>
+        <td>rew@gmail.com</td>
+        <td>Đà Nẵng</td>
+        <td>Employee</td>
+        <td>Đại Học</td>
+        <td>...</td>
+        <td>HR</td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Delete
+            </button>
+        </td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" size="30%" data-bs-toggle="modal"
+                    data-bs-target="#editEmployee">Edit
+            </button>
+        </td>
+    </tr>
+    <tr>
+
+        <td>2</td>
+        <td>Nguyen Hoang H</td>
+        <td>08/06/1995</td>
+        <td>C023</td>
+        <td>15000000</td>
+        <td>091793465</td>
+        <td>Hoew@gmail.com</td>
+        <td>Đà Nẵng</td>
+        <td>Employee</td>
+        <td>Đại Học</td>
+        <td>...</td>
+        <td>HH</td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" size="10%" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Delete
+            </button>
+        </td>
+        <td>
+            <button class="btn btn-outline-warning" type="button" size="30%" data-bs-toggle="modal"
+                    data-bs-target="#editEmployee">Edit
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+    <button class=" btn btn-outline-warning" type="submit" data-bs-toggle="modal" data-bs-target="#addcustomer">Add
+        Customer
+    </button>
+</div>
+<div class="modal fade" id="addcustomer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="add">Notification</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Add Employee</h5>
+                <form action="" method="post">
+                    <p>Enter Id</p>
+                    <input type="number" name="Id">
+                    <p>Enter name</p>
+                    <input type="text" name="customerType">
+                    <p>Enter Date of Birth</p>
+                    <input type="text" name="nameCustomer">
+                    <p>Enter id card</p>
+                    <input type="date" name="dayOfBrith">
+                    <p>Enter salary</p>
+                    <input type="number" name="gender">
+                    <p>Enter id phone number</p>
+                    <input type="text" name="card">
+                    <p>Enter Email</p>
+                    <input type="text" name="phone">
+                    <p>Enter Address</p>
+                    <input type="text" name="email">
+                    <p>Enter Position</p>
+                    <input type="text" name="address">
+                    <p>Education degree id</p>
+                    <input type="text" name="education">
+                    <p>Enter Division</p>
+                    <input type="text" name="division">
+                    <p>Enter User name</p>
+                    <input type="text" name=" username">
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Notification</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Do you want to continue the action
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Edit-->
+<div class="modal fade" id="editEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="edit">Notification</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Edit Employee</h5>
+                <form action="" method="post">
+                    <p>Enter Id</p>
+                    <input type="number" name="Id">
+                    <p>Enter name</p>
+                    <input type="text" name="customerType">
+                    <p>Enter Date of Birth</p>
+                    <input type="text" name="nameCustomer">
+                    <p>Enter id card</p>
+                    <input type="date" name="dayOfBrith">
+                    <p>Enter salary</p>
+                    <input type="number" name="gender">
+                    <p>Enter id phone number</p>
+                    <input type="text" name="card">
+                    <p>Enter Email</p>
+                    <input type="text" name="phone">
+                    <p>Enter Address</p>
+                    <input type="text" name="email">
+                    <p>Enter Position</p>
+                    <input type="text" name="address">
+                    <p>Education degree id</p>
+                    <input type="text" name="education">
+                    <p>Enter Division</p>
+                    <input type="text" name="division">
+                    <p>Enter User name</p>
+                    <input type="text" name=" username">
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
