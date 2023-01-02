@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contract</title>
+  <link rel="stylesheet" href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.css">
+  <script src="../bootstrap-5.3.0-alpha1-dist/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap-grid.css">
+  <link rel="stylesheet" href="../bootstrap-5.3.0-alpha1-dist/css/bootstrap.rtl.css">
+</head>
+<body>
+  <div class="row bg-primary ">
+    <p>Weather</p>
+  </div>
+
+  <div class="row header h-20 bg-white">
+    <div class="col 12 col-md-3 col-sm-6"><img src="../img/logo@2x.png" alt="" height="100"></div>
+    <div class="col-md-2 col-sm-6  "><img src="../img/widget-tripadvisor-rating.png" width="50%" height="30%">
+      <p>Review </p>
+    </div>
+    <div class="col-md-3 col-sm-6 fst-italic "><p> Address: 103 – 105 Võ Nguyên Giáp Street, Khuê Mỹ wards, Ngũ hành
+      Sơn
+      District,
+      Đà Nẵng city, Việt Nam
+      7.0 km from International Airport Đà Nẵng</p></div>
+    <div class="col-md-3 col-sm-5">
+      <p>
+        Phone: 84-236-3847 333/888 reservation@furamavietnam.com</p>
+    </div>
+    <div class="col-md-1 col-sm-1 ">
+      <p>Nguyen The </p>
+
+    </div>
+
+  </div>
+
+  <div class="row headerlink ">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary ">
+      <div class="container-fluid ">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-0 mb-lg-2">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Employee</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Customer</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link disabled" href="facility.html">Service</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">Contract</a>
+            </li>
+
+          </ul>
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+<table class="table caption-top">
+  <thead>
+  <tr>
+    <th scope="col">STT</th>
+    <th scope="col">Facility</th>
+    <th scope="col">Customer</th>
+    <th scope="col">Start Day</th>
+    <th scope="col">End Day</th>
+    <th scope="col"> Down Payment</th>
+    <th scope="col">Total</th>
+    <th scope="col">Attach facility</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>1</td>
+    <td>Room Twin 01</td>
+    <td>Nguyễn Thị Hào</td>
+    <td>08/12/2020</td>
+    <td>08/12/2020</td>
+    <td>0</td>
+    <td>1.000.000</td>
+    <td>
+      <button class="bg-primary" type="submit" name="addfacility" data-bs-toggle="modal" data-bs-target="#addf">+</button>
+      <button class="bg-primary" type="submit" name="list">List Attach Facility</button>
+    </td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Villa Beach Front</td>
+    <td>Trương Đình Nghệ</td>
+    <td>14/07/2020</td>
+    <td>21/07/2020</td>
+    <td>200000</td>
+    <td>2000000</td>
+    <td>
+      <button class="bg-primary" type="submit" name="addfacility" data-bs-target="#addf" data-bs-toggle="modal">+</button>
+      <button class="bg-primary" type="submit" name="list">List Attach Facility</button>
+    </td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>House Princess 01</td>
+    <td>Dương Văn Quan</td>
+    <td>15/03/2021</td>
+    <td>17/03/2021</td>
+    <td>50000</td>
+    <td>500000</td>
+    <td> <button class="bg-primary" type="submit" name="addfacility" data-bs-target="#addf" data-bs-toggle="modal">+</button>
+      <button class=" bg-primary" type="submit" name="list" >List Attach Facility</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="modal fade" id="addf" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="add" data-bs-target="#addf">Notification</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        <form action="" method="post">
+          <p>Start Day</p>
+          <input type="date" name="day">
+          <p>End Day</p>
+          <input type="date" name="endday">
+          <p>Money</p>
+          <input type="number" name="money">
+          <p>Total money</p>
+          <input type="number" name="total">
+          <p>Customer</p>
+          <input type="number" name="customer">
+          <p>Facility</p>
+          <input type="text" name="facility">
+          <p>Attach facility</p>
+         <button>+</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">HỦY BỎ</button>
+        <button type="button" class="btn btn-primary">TẠO HỢP ĐỒNG</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>
