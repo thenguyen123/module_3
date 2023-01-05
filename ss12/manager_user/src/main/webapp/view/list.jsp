@@ -17,6 +17,7 @@
 <body>
 <h1>User</h1>
 <p><a href="/user?action=create">Create user</a></p>
+<p><a href="/user?action=sort">Sort</a></p>
 <form method="get" action="/user?action=find">
 <div>
   <p>Find User</p>

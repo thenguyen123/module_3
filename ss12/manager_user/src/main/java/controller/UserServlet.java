@@ -10,6 +10,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet(name = "UserServlet", value = "/user")
@@ -38,9 +39,25 @@ public class UserServlet extends HttpServlet {
             case "find":
                 showFind(request, response);
                 break;
+            case "sort":
+                sortShow(request,response);
             default:
                 showList(request, response);
         }
+    }
+
+    private void sortShow(HttpServletRequest request, HttpServletResponse response) {
+        List<User> list=userService.sortName();
+        request.setAttribute("list",list);
+        try {
+            request.getRequestDispatcher("view/sort.jsp").forward(request,response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
 
     private void showFind(HttpServletRequest request, HttpServletResponse response) {

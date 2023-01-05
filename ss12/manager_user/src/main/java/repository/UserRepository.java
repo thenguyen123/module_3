@@ -19,6 +19,7 @@ public class UserRepository implements IUserRepository {
     private static final String SELECT_ALL_USERS = "select*from users;";
     private static final String DELETE_USERS_SQL = "delete from users where id=?;";
     private static final String UPDATE_USERS_SQL = "update users set name=?,email=?,country=? where id=?;";
+    private static final String SELECT_SORT = "select*from users order by name";
 
     @Override
     public boolean save(User user) {
@@ -113,16 +114,37 @@ public class UserRepository implements IUserRepository {
         Connection connection = BaseUserRepository.getConnectDB();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_COUNTRY);
-            preparedStatement.setString(1,country);
+            preparedStatement.setString(1, country);
             ResultSet resultSet = preparedStatement.executeQuery();
-         while (resultSet.next()){
-             int id=resultSet.getInt("id");
-             String name=resultSet.getString("name");
-             String email=resultSet.getString("email");
-             String countrynew=resultSet.getString("country");
-             User user= new User(id, name, email,countrynew);
-             list.add(user);
-         }
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String countrynew = resultSet.getString("country");
+                User user = new User(id, name, email, countrynew);
+                list.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public List<User> sortName() {
+        List<User> list = new ArrayList<>();
+        Connection connection = BaseUserRepository.getConnectDB();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(SELECT_SORT);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String countrynew = resultSet.getString("country");
+                User user = new User(id, name, email, countrynew);
+                list.add(user);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
