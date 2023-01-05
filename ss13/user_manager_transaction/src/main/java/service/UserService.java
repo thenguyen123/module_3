@@ -45,7 +45,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void addUserTransaction(User user) {
-userRepository.addUserTransaction(user);
+    public String addUserTransaction(User user) {
+ return userRepository.addUserTransaction(user);
     }
 }

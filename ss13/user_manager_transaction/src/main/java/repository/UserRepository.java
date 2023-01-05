@@ -152,9 +152,9 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public void addUserTransaction(User user) {
+    public String addUserTransaction(User user) {
         Connection connection = BaseUserRepository.getConnectDB();
-
+        String mess = null;
         try {
             connection.setAutoCommit(false);
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
@@ -165,6 +165,7 @@ public class UserRepository implements IUserRepository {
             if (count == 1) {
                 try {
                     connection.commit();
+                    mess="success";
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -172,6 +173,7 @@ public class UserRepository implements IUserRepository {
             } else {
                 try {
                       connection.rollback();
+                      mess="fail";
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
@@ -179,7 +181,7 @@ public class UserRepository implements IUserRepository {
 
         }catch (SQLException e){
             e.printStackTrace();
-        }
+        }return mess;
     }
 
 

@@ -12,6 +12,6 @@ public interface IUserService {
     User findById(int id);
     List<User> findByCountry(String country);
     List<User>  sortName();
-    void addUserTransaction(User user);
+    String addUserTransaction(User user);
 
 }

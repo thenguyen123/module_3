@@ -40,17 +40,17 @@ public class UserServlet extends HttpServlet {
                 showFind(request, response);
                 break;
             case "sort":
-                sortShow(request,response);
+                sortShow(request, response);
             default:
                 showList(request, response);
         }
     }
 
     private void sortShow(HttpServletRequest request, HttpServletResponse response) {
-        List<User> list=userService.sortName();
-        request.setAttribute("list",list);
+        List<User> list = userService.sortName();
+        request.setAttribute("list", list);
         try {
-            request.getRequestDispatcher("view/sort.jsp").forward(request,response);
+            request.getRequestDispatcher("view/sort.jsp").forward(request, response);
         } catch (ServletException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -61,8 +61,8 @@ public class UserServlet extends HttpServlet {
     }
 
     private void showFind(HttpServletRequest request, HttpServletResponse response) {
-          String country=request.getParameter("country");
-        List<User> user= userService.findByCountry(country);
+        String country = request.getParameter("country");
+        List<User> user = userService.findByCountry(country);
         request.setAttribute("user", user);
         try {
             request.getRequestDispatcher("/view/find.jsp").forward(request, response);
@@ -75,7 +75,7 @@ public class UserServlet extends HttpServlet {
     }
 
     private void showDelete(HttpServletRequest request, HttpServletResponse response) {
-        int id=Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         User user = userService.findById(id);
         request.setAttribute("user", user);
         try {
@@ -148,9 +148,9 @@ public class UserServlet extends HttpServlet {
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) {
-        int id=Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("id"));
         userService.delete(id);
-        showList(request,response);
+        showList(request, response);
     }
 
     private void editUser(HttpServletRequest request, HttpServletResponse response) {
@@ -168,7 +168,8 @@ public class UserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String country = request.getParameter("country");
         User user = new User(name, email, country);
-        userService.addUserTransaction(user);
+        String mess = userService.addUserTransaction(user);
+        request.setAttribute("mess", mess);
         try {
             request.getRequestDispatcher("/view/create.jsp").forward(request, response);
         } catch (ServletException e) {

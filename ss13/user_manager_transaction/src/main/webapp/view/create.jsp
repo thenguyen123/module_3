@@ -14,6 +14,7 @@
 
 <h2>User</h2>
 <p><a href="/user" style="text-decoration: none">Back to home</a></p>
+<p >Add : ${mess}</p>
 <form method="post">
 <p>Name</p>
     <input name="name" type="text">
