@@ -122,7 +122,7 @@ private  final String UPDATE="update customer set name_customer =?, date_of_birt
                 int customerTypeId=resultSet.getInt("customer_type_id");
                 String nameCustomerType=resultSet.getString("name_customer_type");
                 CustomerType customerType=new CustomerType(customerTypeId,nameCustomerType);
-                Customer customer=new Customer(id,name,birthday,gender,idCard,phone,email,address,customerType);
+                Customer customer=new Customer(id,namenew,birthday,gender,idCard,phone,email,address,customerType);
                 list.add(customer);
             }
     }catch (SQLException e){

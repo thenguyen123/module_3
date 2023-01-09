@@ -14,6 +14,33 @@
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
+<div class="container-fluid">
+
+    <div class="row bg-primary ">
+        <p>Weather</p>
+    </div>
+
+    <div class="row header h-20 bg-white">
+        <div class="col 12 col-md-3 col-sm-6"><img src="../img/logo@2x.png" alt="" height="100"></div>
+        <div class="col-md-2 col-sm-6  "><img src="../img/widget-tripadvisor-rating.png" width="50%" height="30%">
+            <p>Review </p>
+        </div>
+        <div class="col-md-3 col-sm-6 fst-italic "><p> Address: 103 – 105 Võ Nguyên Giáp Street, Khuê Mỹ wards, Ngũ hành
+            Sơn
+            District,
+            Đà Nẵng city, Việt Nam
+            7.0 km from International Airport Đà Nẵng</p></div>
+        <div class="col-md-3 col-sm-5">
+            <p>
+                Phone: 84-236-3847 333/888 reservation@furamavietnam.com</p>
+        </div>
+        <div class="col-md-1 col-sm-1 ">
+            <p>Nguyen The </p>
+
+        </div>
+
+    </div>
+</div>
 <div class="row headerlink ">
     <nav class="navbar navbar-expand-lg bg-body-tertiary ">
         <div class="container-fluid ">
@@ -39,6 +66,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled">Contract</a>
+
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="/facility">Facility</a>
                     </li>
 
                 </ul>

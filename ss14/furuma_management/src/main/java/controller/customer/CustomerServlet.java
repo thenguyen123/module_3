@@ -19,6 +19,8 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
             action = " ";
@@ -88,6 +90,8 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
         if (action == null) {
             action = " ";
@@ -121,6 +125,8 @@ public class CustomerServlet extends HttpServlet {
         CustomerType customerType = new CustomerType(idCustomerType);
         Customer customer = new Customer(id, name, birthday, gender, idCard, phone, email, address, customerType);
         boolean check = customerService.update(customer);
+        List<CustomerType> customerTypes = customerTypeService.findAll();
+        request.setAttribute("list", customerTypes);
         String mess = "update success";
         if (!check) {
             mess = "failed";
@@ -155,11 +161,14 @@ public class CustomerServlet extends HttpServlet {
         CustomerType customerType = new CustomerType(idCustomerType);
         Customer customer = new Customer(id, name, birthday, gender, idCard, phone, email, address, customerType);
         boolean check = customerService.create(customer);
+        List<CustomerType> customerTypes = customerTypeService.findAll();
+        request.setAttribute("list", customerTypes);
         String mess = "Create success";
         if (!check) {
             mess = "failed";
         }
         request.setAttribute("mess", mess);
+
         try {
             request.getRequestDispatcher("/view/customer/create.jsp").forward(request, response);
         } catch (ServletException e) {

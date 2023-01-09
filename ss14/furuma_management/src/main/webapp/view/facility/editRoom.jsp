@@ -2,16 +2,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: acer
-  Date: 1/6/2023
-  Time: 10:35 PM
+  Date: 1/9/2023
+  Time: 7:37 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
 <div class="container-fluid">
@@ -52,7 +50,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-0 mb-lg-2">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="home.jsp">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/home.jsp">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Employee</a>
@@ -80,35 +78,40 @@
         </div>
     </nav>
 </div>
-<h1>Create Customer</h1>
-<h3>${mess}</h3>
-<form method="post">
-<p>ID</p>
-<input type="number" name="id" required>
-<p>Name</p>
-<input name="name" type="text" required>
-    <p>Email</p>
-    <input name="email" type="text">
-<p>Birthday</p>
-<input name="birthday" type="date" required>
-<input name="gender" value="1" type="radio">Nam
-<input name="gender" value="0" type="radio">Nữ
-<p>ID card</p>
-<input name="idCard" type="text" required>
-<p>Phone</p>
-<input type="text" name="phone" required>
-<p>Address</p>
-<input type="text" name="address" required>
-<p> Customer Type</p>
-<select name="customerTypeId">
-<c:forEach items="${list}" var="customerType" >
-    <option value="${customerType.id}">${customerType.name}</option>
-</c:forEach>
-</select>
-<button type="submit" value="create">Save</button>
+<h3>Edit Facility</h3>
+<p>${mess}</p>
+<form method="post" >
+    <p>Name</p>
+    <input name="name" type="text" placeholder="${facility.name}">
+    <p>Area</p>
+    <input name="area" type="number" placeholder="${facility.area}">
+    <p>Cost</p>
+    <input name="cost" type="number" placeholder="${facility.cost}">
+    <p>Max People</p>
+    <input name="people" type="number" placeholder="${facility.maxPeople}">
 
+    <input name="standard" type="text" value=" " hidden>
+
+    <input name="description" type="text" value=" " hidden>
+
+    <input name="pool" type="number" value="0" hidden>
+
+    <input name="floors" type="number" value="0" hidden>
+<p> Facility Free</p>
+    <input name="facilityFree" type="text" value=" " placeholder="${facility.facilityFree}">
+    <p>Rent Type</p>
+    <select name="rent">
+        <c:forEach var="rentlist" items="${rentTypeList}">
+            <option value="${rentlist.id}">${rentlist.name}</option>
+        </c:forEach>
+    </select>
+    <p> Facility Type</p>
+    <select name="facilityType">
+        <c:forEach var="list" items="${listFacility}">
+            <option value="${list.id}">${list.name}</option>
+        </c:forEach>
+    </select>
+    <button type="submit" class="btn btn-outline-success" >Save</button>
 </form>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </html>

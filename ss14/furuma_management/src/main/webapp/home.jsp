@@ -77,6 +77,9 @@
                         <li class="nav-item">
                             <a class="nav-link disabled">Contract</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/facility">Facility</a>
+                        </li>
 
                     </ul>
                     <form class="d-flex" role="search">
