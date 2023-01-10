@@ -83,6 +83,7 @@
     </nav>
 </div>
 <h2 class="text-center">Employee List</h2>
+<a href="/employee?action=create"><button class="btn btn-primary">Create</button></a>
 <table class="table table-striped table-bordered " id="tableEmployee" style="width: 100%;">
     <thead>
     <tr>

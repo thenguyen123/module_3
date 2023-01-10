@@ -126,19 +126,24 @@ public class FacilityServlet extends HttpServlet {
         String facilityFree = request.getParameter("facilityFree");
         int rentID = Integer.parseInt(request.getParameter("rent"));
         int facilityID = Integer.parseInt(request.getParameter("facilityType"));
-        RentType rentType = new RentType(rentID);
-        FacilityType facilityType = new FacilityType(facilityID);
-        Facility facility = new Facility(id,name, area, cost, maxPeople,
-                standardRoom, descriptionOtherConvenience, poolArea, numberOfFloors, facilityFree, rentType, facilityType);
+        if(area<0 || cost<0|| maxPeople<0|| numberOfFloors<0||poolArea<0){
+            String message="Phải nhập số lớn hơn 0";
+            request.setAttribute("message",message);
+            showUpdate(request,response);
+        }else {
+            RentType rentType = new RentType(rentID);
+            FacilityType facilityType = new FacilityType(facilityID);
+            Facility facility = new Facility(id, name, area, cost, maxPeople,
+                    standardRoom, descriptionOtherConvenience, poolArea, numberOfFloors, facilityFree, rentType, facilityType);
 
-        boolean check = facilityService.update(facility);
-        String mess = "create success";
-        if (!check) {
-            mess = "failed";
+            boolean check = facilityService.update(facility);
+            String mess = "create success";
+            if (!check) {
+                mess = "failed";
+            }
+            request.setAttribute("mess", mess);
+            showList(request, response);
         }
-        request.setAttribute("mess", mess);
-        showList(request, response);
-
     }
 
     private void showUpdate(HttpServletRequest request, HttpServletResponse response) {
@@ -172,15 +177,8 @@ public class FacilityServlet extends HttpServlet {
             mess = "fail";
         }
         request.setAttribute("mess", mess);
-
-        try {
             showList(request, response);
-            request.getRequestDispatcher("view/facility/list.jsp").forward(request, response);
-        } catch (ServletException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
 
     }
 
@@ -196,20 +194,24 @@ public class FacilityServlet extends HttpServlet {
         String facilityFree = request.getParameter("facilityFree");
         int rentID = Integer.parseInt(request.getParameter("rent"));
         int facilityID = Integer.parseInt(request.getParameter("facilityType"));
+        if(area<0 || cost<0|| maxPeople<0|| numberOfFloors<0||poolArea<0){
+            String message="Phải nhập số lớn hơn 0";
+            request.setAttribute("message",message);
+            showCreate(request,response);
+        }else {
+            RentType rentType = new RentType(rentID);
+            FacilityType facilityType = new FacilityType(facilityID);
+            Facility facility = new Facility(name, area, cost, maxPeople,
+                    standardRoom, descriptionOtherConvenience, poolArea, numberOfFloors, facilityFree, rentType, facilityType);
 
-        RentType rentType = new RentType(rentID);
-        FacilityType facilityType = new FacilityType(facilityID);
-        Facility facility = new Facility(name, area, cost, maxPeople,
-                standardRoom, descriptionOtherConvenience, poolArea, numberOfFloors, facilityFree, rentType, facilityType);
-
-        boolean check = facilityService.save(facility);
-        String mess = "create success";
-        if (!check) {
-            mess = "failed";
+            boolean check = facilityService.save(facility);
+            String mess = "create success";
+            if (!check) {
+                mess = "failed";
+            }
+            request.setAttribute("mess", mess);
+            showList(request, response);
         }
-        request.setAttribute("mess", mess);
-        showList(request, response);
-
 
     }
 }

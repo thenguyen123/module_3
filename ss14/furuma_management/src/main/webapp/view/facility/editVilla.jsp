@@ -82,6 +82,7 @@
 </div>
 <h3>Edit Facility</h3>
 <p>${mess}</p>
+<p>${message}</p>
 <form method="post" >
     <p>Name</p>
     <input name="name" type="text" placeholder="${facility.name}">

@@ -2,8 +2,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: acer
-  Date: 1/6/2023
-  Time: 10:35 PM
+  Date: 1/10/2023
+  Time: 8:40 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -80,6 +80,7 @@
         </div>
     </nav>
 </div>
+
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
@@ -87,48 +88,60 @@
             <h1>Create Customer</h1>
             <h3>${mess}</h3>
             <div class="col-md-12">
-                <label for="id" class="form-label">ID</label>
-                <input type="number" class="form-control" name="id" required id="id">
+                <label for="name" class="form-label">name</label>
+                <input type="text" class="form-control" name="name" required id="name">
             </div>
             <div class="col-md-12">
-                <label for="name" class="form-label" >Name</label>
-                <input type="text" oninput="checkName(this.value)" class="form-control" id="name" name="name" >
-                <span id="errorName" style="color: red"></span>
-            </div>
-            <div class="col-md-12">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email">
-
-            </div>
-            <div class="col-md-12">
-                <label for="birthday" class="form-label">Birthday</label>
-                <input type="date" class="form-control" id="birthday" name="birthday" oninput="checkday(this.value)">
-                <span id="errorDay"></span>
+                <label for="dayOfBirth" class="form-label" >Day Of Birth</label>
+                <input type="date"  class="form-control" id="dayOfBirth" name="dayOfBirth" >
             </div>
             <div class="col-md-12">
                 <label for="idCard" class="form-label">Id Card</label>
                 <input type="text" class="form-control" id="idCard" name="idCard">
+
+            </div>
+            <div class="col-md-12">
+                <label for="salary" class="form-label">Salary</label>
+                <input type="number" class="form-control" id="salary" name="salary">
+                <span id="errorDay"></span>
             </div>
             <div class="col-md-12">
                 <label for="phone" class="form-label">Phone</label>
-                <input type="text" oninput="checkPhone(this.value)" class="form-control" id="phone" name="phone">
-                <span id="errorPhone" style="color: red"></span>
+                <input type="text" class="form-control" id="phone" name="phone">
+            </div>
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email"  class="form-control" id="email" name="email">
+
             </div>
 
             <div class="col-md-12">
                 <label for="address" class="form-label">Address</label>
                 <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St">
             </div>
-            <div class="col-md-6">
-                <input name="gender" value="1" type="radio"> Nam <br>
-                <input name="gender" value="0" type="radio"> Nữ
-            </div>
-            <div class="col-md-6">
-                <p> Customer Type
+
+            <div class="col-md-4">
+                <p> Education
                 <p>
-                    <select name="customerTypeId" class="w-100 h-50">
-                        <c:forEach items="${list}" var="customerType">
-                            <option value="${customerType.id}">${customerType.name}</option>
+                    <select name="education" class="w-100 h-50">
+                        <c:forEach items="${educations}" var="education">
+                            <option value="${education.id}">${education.name}</option>
+                        </c:forEach>
+                    </select>
+            </div>  <div class="col-md-4">
+                <p> Education
+                <p>
+                    <select name="division" class="w-100 h-50">
+                        <c:forEach items="${divisions}" var="division">
+                            <option value="${division.id}">${division.name}</option>
+                        </c:forEach>
+                    </select>
+            </div>  <div class="col-md-4">
+                <p> Education
+                <p>
+                    <select name="position" class="w-100 h-50">
+                        <c:forEach items="${positions}" var="position">
+                            <option value="${position.id}">${position.name}</option>
                         </c:forEach>
                     </select>
             </div>
@@ -138,41 +151,5 @@
         </form>
     </div>
 </div>
-
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
-<script>
-function checkName(name) {
-let regName = /^[A-Z][a-z]*(\s[A-Z][a-z]*)+$/;
-let checkedName = regName.exec(name);
-if (!checkedName) {
-document.getElementById("errorName").innerText = "Tên chưa đúng định dạng"
-document.getElementById("btnSave").disabled = true;
-} else {
-document.getElementById("btnSave").disabled = false;
-document.getElementById("errorName").innerText = ""
-}
-}
-function checkPhone(phone){
-    let regPhone=/^(090\d{7}|091\d{7}|\(84\)\+91\d{7}|\(84\)\+90\d{7})$/
-    if(!regPhone.exec(phone)){
-        document.getElementById("errorPhone").innerText="Phone chưa đúng định dạng"
-        document.getElementById("btnSave").disabled= true;
-    }else {
-        document.getElementById("errorPhone").innerText=""
-        document.getElementById("btnSave").disabled= false;
-    }
-}function checkday(day){
-    let regPhone=/^(0[1-9]|1\d|2\d|3{[0-1])\/(0[1-9]|1[0-2])\/(\d{4})$/
-    if(!regPhone.exec(phone)){
-        document.getElementById("errorDay").innerText="Ngày chưa đúng định dạng"
-        document.getElementById("btnSave").disabled= true;
-    }else {
-        document.getElementById("errorDay").innerText=""
-        document.getElementById("btnSave").disabled= false;
-    }
-}
-</script>
 </html>

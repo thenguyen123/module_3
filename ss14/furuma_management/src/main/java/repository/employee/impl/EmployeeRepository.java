@@ -20,6 +20,12 @@ public class EmployeeRepository implements IEmployeeRepository {
             "on p.position_id=e.position_id join education_degree ed on ed.education_degree_id=e.education_degree_id join division d on d.division_id=e.division_id ";
     private final String SEARCH = "select e.*,p.name_position,ed.name_education_degree,d.name_division from employee e join position p " +
             "on p.position_id=e.position_id join education_degree ed on ed.education_degree_id=e.education_degree_id join division d on d.division_id=e.division_id where name_employee like ? and name_education_degree like ?";
+    private final String UPDATE="insert into employee (\n" +
+            "   name_employee, day_of_birth, id_card, \n" +
+            "  salary, phone_number, email, address, \n" +
+            "  position_id, education_degree_id, division_id\n" +
+            ") \n" +
+            "values (?,?,?,?,?,?,?,?,?,?)";
     @Override
     public List<Employee> findAll() {
         List<Employee> list = new ArrayList<>();
@@ -75,6 +81,26 @@ public class EmployeeRepository implements IEmployeeRepository {
 
     @Override
     public boolean updateEmployee(Employee employee) {
+        //      "   name_employee, day_of_birth, id_card, \n" +
+        //            "  salary, phone_number, email, address, \n" +
+        //            "  position_id, education_degree_id, division_id\n" +
+        Connection connection=DataBase.getConnectDB();
+        try{
+            PreparedStatement preparedStatement =connection.prepareStatement(UPDATE);
+            preparedStatement.setString(1,employee.getName());
+            preparedStatement.setString(2,employee.getDayOfBirth());
+            preparedStatement.setString(3, employee.getIdCard());
+            preparedStatement.setDouble(4,employee.getSalary());
+            preparedStatement.setString(5,employee.getPhone());
+            preparedStatement.setString(6,employee.getEmail());
+            preparedStatement.setString(7,employee.getAddress());
+            preparedStatement.setInt(8,employee.getPosition().getId());
+            preparedStatement.setInt(9,employee.getEducation().getId());
+            preparedStatement.setInt(10,employee.getDivision().getId());
+            return preparedStatement.executeUpdate()>0;
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
         return false;
     }
 
