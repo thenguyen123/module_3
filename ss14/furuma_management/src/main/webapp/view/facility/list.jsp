@@ -180,7 +180,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="create">Create Facility Villa</h5>
+                <h5 class="modal-title">Create Facility Villa</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -231,14 +231,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createRoom">Create Facility Villa</h5>
+                <h5 class="modal-title">Create Facility Villa</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>${mess}</p>
                 <form method="post" action="/facility?action=create">
                     <p>Name</p>
-                    <input name="name" type="text">
+                    <input name="name" oninput="checkName()" type="text">
+
                     <p>Area</p>
                     <input name="area" type="number">
                     <p>Cost</p>
@@ -277,14 +278,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createHouse">Create Facility Villa</h5>
+                <h5 class="modal-title" >Create Facility Villa</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>${mess}</p>
                 <form method="post"  action="/facility?action=create">
                     <p>Name</p>
-                    <input name="name" type="text">
+                    <input name="name" oninput="checkName(this.value)" type="text">
+                    <span id="errorName"></span>
                     <p>Area</p>
                     <input name="area" type="number">
                     <p>Cost</p>
@@ -404,3 +406,16 @@
             crossorigin="anonymous"></script>
 </body>
 </html>
+<script>
+function checkName(name) {
+let regName = /^[A-Z][a-z]*(\s[A-Z][a-z]*)+$/;
+let checkedName = regName.exec(name);
+if (!checkedName) {
+document.getElementById("errorName").innerText = "Tên chưa đúng định dạng"
+document.getElementById("btnSave").disabled = true;
+} else {
+document.getElementById("btnSave").disabled = false;
+document.getElementById("errorName").innerText = ""
+}
+}
+</script>

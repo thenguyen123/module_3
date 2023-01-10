@@ -166,7 +166,7 @@ function checkPhone(phone){
     }
 }function checkday(day){
     let regPhone=/^(0[1-9]|1\d|2\d|3{[0-1])\/(0[1-9]|1[0-2])\/(\d{4})$/
-    if(!regPhone.exec(phone)){
+    if(!regPhone.exec(day)){
         document.getElementById("errorDay").innerText="Ngày chưa đúng định dạng"
         document.getElementById("btnSave").disabled= true;
     }else {

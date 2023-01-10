@@ -85,34 +85,37 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
         <form class="row g-3 btn-primary" method="post">
-            <h1>Create Customer</h1>
+            <h1>Create Employee</h1>
             <h3>${mess}</h3>
             <div class="col-md-12">
                 <label for="name" class="form-label">name</label>
-                <input type="text" class="form-control" name="name" required id="name">
+                <input type="text" oninput="checkName(this.value)" class="form-control" name="name" required id="name">
+                <span id="errorName"></span>
             </div>
             <div class="col-md-12">
-                <label for="dayOfBirth" class="form-label" >Day Of Birth</label>
-                <input type="date"  class="form-control" id="dayOfBirth" name="dayOfBirth" >
+                <label for="dayOfBirth" class="form-label">Day Of Birth</label>
+                <input type="date" oninput="checkday(this.value)" class="form-control" id="dayOfBirth"
+                       name="dayOfBirth">
+                <span id="errorDay" style="color: red;"></span>
             </div>
             <div class="col-md-12">
                 <label for="idCard" class="form-label">Id Card</label>
-                <input type="text" class="form-control" id="idCard" name="idCard">
-
+                <input type="text" oninput="checkIdCard(this.value)" class="form-control" id="idCard" name="idCard">
+                <span id="errorIdCard" style="color: red"></span>
             </div>
             <div class="col-md-12">
                 <label for="salary" class="form-label">Salary</label>
                 <input type="number" class="form-control" id="salary" name="salary">
-                <span id="errorDay"></span>
             </div>
             <div class="col-md-12">
                 <label for="phone" class="form-label">Phone</label>
-                <input type="text" class="form-control" id="phone" name="phone">
+                <input type="text" oninput="checkPhone(this.value)" class="form-control" id="phone" name="phone">
+                <span id="errorPhone" style="color: red"></span>
             </div>
             <div class="col-md-12">
                 <label for="email" class="form-label">Email</label>
-                <input type="email"  class="form-control" id="email" name="email">
-
+                <input type="email" oninput="checkEmail(this.value)" class="form-control" id="email" name="email">
+                <span id="errorEmail" style="color:red;"></span>
             </div>
 
             <div class="col-md-12">
@@ -128,16 +131,18 @@
                             <option value="${education.id}">${education.name}</option>
                         </c:forEach>
                     </select>
-            </div>  <div class="col-md-4">
-                <p> Education
+            </div>
+            <div class="col-md-4">
+                <p> Division
                 <p>
                     <select name="division" class="w-100 h-50">
                         <c:forEach items="${divisions}" var="division">
                             <option value="${division.id}">${division.name}</option>
                         </c:forEach>
                     </select>
-            </div>  <div class="col-md-4">
-                <p> Education
+            </div>
+            <div class="col-md-4">
+                <p> Position
                 <p>
                     <select name="position" class="w-100 h-50">
                         <c:forEach items="${positions}" var="position">
@@ -151,5 +156,62 @@
         </form>
     </div>
 </div>
+<script>
+    function checkName(name) {
+        let regName = /^[A-Z][a-z]*(\s[A-Z][a-z]*)+$/;
+        let checkedName = regName.exec(name);
+        if (!checkedName) {
+            document.getElementById("errorName").innerText = "Tên chưa đúng định dạng"
+            document.getElementById("btnSave").disabled = true;
+        } else {
+            document.getElementById("btnSave").disabled = false;
+            document.getElementById("errorName").innerText = ""
+        }
+    }
+
+    function checkPhone(phone) {
+        let regPhone = /^(090\d{7}|091\d{7}|\(84\)\+91\d{7}|\(84\)\+90\d{7})$/
+        if (!regPhone.exec(phone)) {
+            document.getElementById("errorPhone").innerText = "Phone chưa đúng định dạng"
+            document.getElementById("btnSave").disabled = true;
+        } else {
+            document.getElementById("errorPhone").innerText = ""
+            document.getElementById("btnSave").disabled = false;
+        }
+    }
+
+    function checkday(day) {
+        let regPhone = /^(0[1-9]|1\d|2\d|3{[0-1])\/(0[1-9]|1[0-2])\/(\d{4})$/
+        if (!regPhone.exec(day)) {
+            document.getElementById("errorDay").innerText = "Ngày chưa đúng định dạng"
+            document.getElementById("btnSave").disabled = true;
+        } else {
+            document.getElementById("errorDay").innerText = ""
+            document.getElementById("btnSave").disabled = false;
+        }
+    }
+
+    function checkEmail(email) {
+        let regPhone = /^\w+@\w+\.com$/
+        if (!regPhone.exec(email)) {
+            document.getElementById("errorEmail").innerText = "Email chưa đúng định dạng"
+            document.getElementById("btnSave").disabled = true;
+        } else {
+            document.getElementById("errorEmail").innerText = ""
+            document.getElementById("btnSave").disabled = false;
+        }
+    }
+
+    function checkIdCard(idCard) {
+        let regPhone = /^(\d{9}|\d{12})$/
+        if (!regPhone.exec(idCard)) {
+            document.getElementById("errorIdCard").innerText = "ID chưa đúng định dạng"
+            document.getElementById("btnSave").disabled = true;
+        } else {
+            document.getElementById("errorIdCard").innerText = ""
+            document.getElementById("btnSave").disabled = false;
+        }
+    }
+</script>
 </body>
 </html>
