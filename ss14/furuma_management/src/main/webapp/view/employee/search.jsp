@@ -2,8 +2,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: acer
-  Date: 1/6/2023
-  Time: 10:37 PM
+  Date: 1/10/2023
+  Time: 11:25 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -52,10 +52,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-0 mb-lg-2">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="home.jsp">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/home.jsp">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Employee</a>
+                        <a class="nav-link active" aria-current="page" href="/employee">Employee</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/customer">Customer</a>
@@ -66,68 +66,71 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled">Contract</a>
-
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="/facility">Facility</a>
+                        <a class="nav-link " href="/facility">Facility</a>
                     </li>
 
                 </ul>
-                <form class="d-flex" role="search" method="post" action="/customer?action=find">
-                    <input  class="form-control me-2" type="text" placeholder="Search" aria-label="Search" name="name">
-                    <button class="btn btn-outline-success" type="submit" value="find">Search</button>
+                <form class="d-flex" role="search" method="post" action="/employee?action=search">
+                    <input class="form-control me-2" type="search" placeholder="Name" aria-label="Search" name="name" value="${name}">
+                    <input class="form-control me-2" type="search" placeholder="Education" aria-label="Search" name="education" value="${education}">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
 </div>
-<h1>Customer List</h1>
-<h3><a href="/customer?action=create" style="text-decoration: none"><button class="btn btn-outline-success">Create Customer</button></a> </h3>
-<table class="table table-row-cell">
+<h2 class="text-center">Employee List</h2>
+<table class="table table-striped table-bordered " id="tableEmployee" style="width: 100%;">
+    <thead>
     <tr>
         <th>STT</th>
         <th>ID</th>
         <th>Name</th>
-        <th>Birthday</th>
+        <th>Day Of Birth</th>
+        <th>Id Card</th>
+        <th>Salary</th>
         <th>Phone</th>
         <th>Email</th>
         <th>Address</th>
-        <th>Gender</th>
-        <th> IdCard</th>
-        <th>Customer Type</th>
-        <th>Edit</th>
-        <th>Delete</th>
-
+        <th>Position</th>
+        <th>Education</th>
+        <th>Division</th>
+        <th> Edit</th>
+        <th> Delete</th>
     </tr>
-    <c:forEach varStatus="stt" var="customer" items="${list}">
+    </thead>
+    <tbody>
+    <c:forEach var="employee" items="${list}" varStatus="Stt">
         <tr>
-            <td>${stt.count}</td>
-            <td>${customer.id}</td>
-            <td>${customer.name}</td>
-            <td>${customer.birthday}</td>
-            <td>${customer.phone}</td>
-            <td>${customer.email}</td>
-
-            <td>${customer.address}</td>
-            <c:if test="${customer.gender ==1}">
-            <td>Nam</td>
-            </c:if>
-            <c:if test="${customer.gender ==0}">
-            <td>Nữ</td>
-            </c:if>
-            <td>${customer.idCard}</td>
-            <td>${customer.customerType.name}</td>
-
-            <td>
-               <a href="/customer?action=edit&id=${customer.id}"> <button class="btn btn-outline-success" >Edit</button></a> </td>
+            <td>${Stt.count}</td>
+            <td>${employee.id}</td>
+            <td>${employee.name}</td>
+            <td>${employee.dayOfBirth}</td>
+            <td>${employee.idCard}</td>
+            <td>${employee.salary}</td>
+            <td>${employee.phone}</td>
+            <td>${employee.email}</td>
+            <td>${employee.address}</td>
+            <td>${employee.position.name}</td>
+            <td>${employee.education.name}</td>
+            <td>${employee.division.name}</td>
+            <td><a href="/facility?action=edit&id=${employee.id}">
+                <button class="btn btn-outline-success">Edit</button>
+            </a></td>
 
             <td>
-                <button class="btn btn-outline-success"  onclick="infoDelete('${customer.id}','${customer.name}')" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete</button>
+                <button class="btn btn-outline-success" onclick="infoDelete('${employee.id}','${employee.name}')"
+                        type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Delete
+                </button>
             </td>
+
         </tr>
+
     </c:forEach>
+    </tbody>
 </table>
-<!-- Modal delete-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -135,11 +138,11 @@
                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/customer?action=delete" method="post">
+            <form action="/employee?action=delete" method="post">
                 <div class="modal-body">
                     <input hidden type="text" id="deleteId" name="deleteId">
-                    <span>Bạn có muốn xoá khách hàng  </span>
-                    <span  style="color: red" id="deleteName"></span>
+                    <span>Bạn có muốn xoá   </span>
+                    <span style="color: red" id="deleteName"></span>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -207,13 +210,11 @@
         </div>
     </div>
 </div>
-</body>
 <script>
-    function infoDelete(id,name) {
-        document.getElementById("deleteId").value=id;
-        document.getElementById("deleteName").innerText=name;
+    function infoDelete(id, name) {
+        document.getElementById("deleteId").value = id;
+        document.getElementById("deleteName").innerText = name;
     }
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
 </html>

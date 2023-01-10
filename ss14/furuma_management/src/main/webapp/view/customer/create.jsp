@@ -80,35 +80,90 @@
         </div>
     </nav>
 </div>
-<h1>Create Customer</h1>
-<h3>${mess}</h3>
-<form method="post">
-<p>ID</p>
-<input type="number" name="id" required>
-<p>Name</p>
-<input name="name" type="text" required>
-    <p>Email</p>
-    <input name="email" type="text">
-<p>Birthday</p>
-<input name="birthday" type="date" required>
-<input name="gender" value="1" type="radio">Nam
-<input name="gender" value="0" type="radio">Nữ
-<p>ID card</p>
-<input name="idCard" type="text" required>
-<p>Phone</p>
-<input type="text" name="phone" required>
-<p>Address</p>
-<input type="text" name="address" required>
-<p> Customer Type</p>
-<select name="customerTypeId">
-<c:forEach items="${list}" var="customerType" >
-    <option value="${customerType.id}">${customerType.name}</option>
-</c:forEach>
-</select>
-<button type="submit" value="create">Save</button>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form class="row g-3 btn-primary" method="post">
+            <h1>Create Customer</h1>
+            <h3>${mess}</h3>
+            <div class="col-md-12">
+                <label for="id" class="form-label">ID</label>
+                <input type="number" class="form-control" name="id" required id="id">
+            </div>
+            <div class="col-md-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name="name" >
+            </div>
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>
+            <div class="col-md-12">
+                <label for="birthday" class="form-label">Birthday</label>
+                <input type="date" class="form-control" id="birthday" name="birthday">
+            </div>
+            <div class="col-md-12">
+                <label for="idCard" class="form-label">Id Card</label>
+                <input type="text" class="form-control" id="idCard" name="idCard">
+            </div>
+            <div class="col-md-12">
+                <label for="birthday" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="phone" name="phone">
+            </div>
 
-</form>
+            <div class="col-md-12">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="1234 Main St">
+            </div>
+            <div class="col-md-6">
+                <input name="gender" value="1" type="radio"> Nam <br>
+                <input name="gender" value="0" type="radio"> Nữ
+            </div>
+            <div class="col-md-6">
+                <p> Customer Type
+                <p>
+                    <select name="customerTypeId" class="w-100 h-50">
+                        <c:forEach items="${list}" var="customerType">
+                            <option value="${customerType.id}">${customerType.name}</option>
+                        </c:forEach>
+                    </select>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-primary" type="submit" value="create">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+<%--<h1>Create Customer</h1>--%>
+<%--<h3>${mess}</h3>--%>
+<%--<form method="post">--%>
+<%--    <p>ID</p>--%>
+<%--    <input type="number" name="id" required>--%>
+<%--    <p>Name</p>--%>
+<%--    <input name="name" type="text" required>--%>
+<%--    <p>Email</p>--%>
+<%--    <input name="email" type="text">--%>
+<%--    <p>Birthday</p>--%>
+<%--    <input name="birthday" type="date" required>--%>
+<%--    <input name="gender" value="1" type="radio">Nam--%>
+<%--    <input name="gender" value="0" type="radio">Nữ--%>
+<%--    <p>ID card</p>--%>
+<%--    <input name="idCard" type="text" required>--%>
+<%--    <p>Phone</p>--%>
+<%--    <input type="text" name="phone" required>--%>
+<%--    <p>Address</p>--%>
+<%--    <input type="text" name="address" required>--%>
+<%--    <p> Customer Type</p>--%>
+<%--    <select name="customerTypeId">--%>
+<%--        <c:forEach items="${list}" var="customerType">--%>
+<%--            <option value="${customerType.id}">${customerType.name}</option>--%>
+<%--        </c:forEach>--%>
+<%--    </select>--%>
+<%--    <button type="submit" value="create">Save</button>--%>
+
+<%--</form>--%>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </html>
